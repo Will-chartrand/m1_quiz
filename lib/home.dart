@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,8 +11,6 @@ import './answer.dart';*/
 import './quiz.dart';
 import './data/globals.dart' as tests;
 import './result.dart';
-import 'dart:convert';
-import 'dart:io';
 
 
 class Home extends StatefulWidget {
@@ -67,6 +69,22 @@ class _Home extends State<Home> {
     }
   }
 
+  void shuffleOptions(){
+    String correctAnswer = "";
+    for(int i = 0; i < questions.length; i++){  // Loop through all questions
+      if(!questions[i].containsKey('noShuffle')){
+        correctAnswer = (questions[i]['options'] as dynamic)[questions[i]['answer']];  // Store correct answer string
+        (questions[i]['options'] as List).shuffle();  // Shuffle
+        for(int j = 0; j < questions[i].length; j++){  // Find index of correct answer and set it as 'answer'
+          if((questions[i]['options'] as List)[j] == correctAnswer){
+            questions[i]['answer'] = j;
+            j = questions[i].length;  // Prematurely set exit condition of for loop
+          }
+        }
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -88,7 +106,8 @@ class _Home extends State<Home> {
       }
       break;
     }
-    questions.shuffle();
+    questions.shuffle();  // Shuffle question order
+    shuffleOptions();  // Shuffle order of answers in each question
   }
 
   Future<bool> _onWillPop() async {
