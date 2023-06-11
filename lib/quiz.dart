@@ -43,7 +43,7 @@ class _QuizState extends State<Quiz> {
         children: [
           Container(
             decoration: const BoxDecoration(color: Colors.white),
-            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row( 
               children: [ 
                 Text('Score: ${widget.score}'),
@@ -52,8 +52,11 @@ class _QuizState extends State<Quiz> {
               ]
             ),
           ),
-          Question(
-            widget.questions[widget.questionIndex]['question'] as String,
+          SizedBox(
+            height: 150,
+            child: Question(
+              widget.questions[widget.questionIndex]['question'] as String,
+            ),
           ),
           const SizedBox(height: 2.0),
           Container(
@@ -131,8 +134,7 @@ class _QuizState extends State<Quiz> {
                       Center(
                         child: TextButton(
                           onPressed: () => {
-                            //widget.answerQuestions((widget.questions[widget.questionIndex]['options'] as List)[selectedRadioTile]['score']),
-                            widget.answerQuestions(1),
+                            widget.answerQuestions(questionCorrect ? 1 : 0),
                             setState((){
                               hasAnswered = false;
                               questionCorrect = selectedRadioTile == correctRadioTile;
@@ -149,11 +151,12 @@ class _QuizState extends State<Quiz> {
                             padding: const EdgeInsets.only(right: 8.0),
                             child: TextButton(
                               onPressed: () => {
-                                widget.answerQuestions(1),
+                                widget.answerQuestions(questionCorrect ? 1 : 0),
                                 setState((){
                                   hasAnswered = false;
                                   questionCorrect = selectedRadioTile == correctRadioTile;
                                   selectedRadioTile = -1;
+                                  correctRadioTile = widget.questions[widget.questionIndex]['answer'] as int;
                                 }),
                               },
                               child: const Text('Explanation'),
@@ -168,11 +171,12 @@ class _QuizState extends State<Quiz> {
                 Center( 
                   child: TextButton(
                     onPressed: () => {
+                      correctRadioTile = widget.questions[widget.questionIndex]['answer'] as int,
                       if(selectedRadioTile != -1)
                         setState((){
                           hasAnswered = true;
                           //questionCorrect = (widget.questions[widget.questionIndex]['options'] as List)[selectedRadioTile]['score'] != 0;
-                          questionCorrect = selectedRadioTile == correctRadioTile;
+                          questionCorrect = (selectedRadioTile == correctRadioTile);
                         }),
                     },
                     //onPressed: () => widget.answerQuestions((widget.questions[widget.questionIndex]['answers'] as List)[selectedRadioTile]['score']),
