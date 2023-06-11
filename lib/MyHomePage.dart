@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const SizedBox(height: 20),
                 SizedBox( 
-                  height: 200,
+                  height: 100,
                   child: GestureDetector(
                     onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(testIndex: 0)));},
                     child: Container(
@@ -41,12 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       ),
-                      child: const Text('Practice Test 1', style: TextStyle(fontSize: 25.0, color: Colors.white)),
+                      child: const Text('Practice Test 1', style: TextStyle(fontSize: 22.0, color: Colors.white)),
                     ),
                   ),
                 ),
                 SizedBox( 
-                  height: 200,
+                  height: 100,
                   child: GestureDetector(
                     onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(testIndex: 1)));},
                     child: Container(
@@ -58,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       ),
-                      child: const Text('Practice Test 2', style: TextStyle(fontSize: 25.0, color: Colors.white)),
+                      child: const Text('Practice Test 2', style: TextStyle(fontSize: 22.0, color: Colors.white)),
                     ),
                   ),
                 ),
                 SizedBox( 
-                  height: 200,
+                  height: 100,
                   child: GestureDetector(
                     onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const Home(testIndex: 2)));},
                     child: Container(
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       ),
-                      child: const Text('Practice Test 3', style: TextStyle(fontSize: 25.0, color: Colors.white)),
+                      child: const Text('Practice Test 3', style: TextStyle(fontSize: 22.0, color: Colors.white)),
                     ),
                   ),
                 ),
