@@ -27,23 +27,24 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home> {
 
-  Future<List<Map>> readJsonFile(String filePath) async {
-    var input = await File(filePath).readAsString();
-    var map = json.decode(input);
-    return map['users'];
-  }
-
+  /// Where test questions are stored (questions pulled from globals.dart)
   List<Map<String, Object>> questions = [];
 
+  /// Question the user is currently on
   var _questionIndex = 0;
+
+  /// User score
   var _totalscore = 0;
 
+  /// Resets the quiz (duh)
   void _resetQuiz() {
     setState(() {});
     _questionIndex = 0;
     _totalscore = 0;
   }
 
+  /// Adds to score if question answered correctly
+  /// Also progresses quiz to next question by changing _questionIndex
   void _answerQuestions(int score) {
     //var aBool=true;
 
@@ -69,6 +70,8 @@ class _Home extends State<Home> {
   @override
   void initState() {
     super.initState();
+
+    // User chooses one of the tests from MyHomePage, number corresponding to the selected test gets passed to this class as testIndex
     switch(widget.testIndex){
       case 0: {
         questions = tests.test2 as dynamic;
@@ -114,6 +117,7 @@ class _Home extends State<Home> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('M1 Practice Quiz ${widget.testIndex + 1}'),
         ),
@@ -124,7 +128,7 @@ class _Home extends State<Home> {
                 questionIndex: _questionIndex,
                 questions: questions,
               ) //
-            : Result(_totalscore, _resetQuiz),
+            : Result(_totalscore, questions.length, _resetQuiz),
       ),
     );
   }
