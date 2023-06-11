@@ -2,40 +2,44 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
+  final int total;
   final VoidCallback resetHandler;
 
-  const Result(this.resultScore, this.resetHandler, {Key? key}) : super(key: key);
+  const Result(this.resultScore, this.total, this.resetHandler, {Key? key}) : super(key: key);
 
   String get resultPhrase {
-    String resultText = 'You did it!';
-    if (resultScore >= 8) {
-      resultText = 'Distinction :) \n You are good in basic concepts of DSA \n';
-    } else if (resultScore >= 5) {
-      resultText = '\n Average\n Done better but you can still do best \n';
+    String resultText = 'Score: ${(resultScore/total * 100).round()}%\n($resultScore out of $total)\n';
+    if ((resultScore/total) >= 0.80) {
+
+      resultText += 'You Passed!\n';
     } else {
-      resultText = '\n Poor score :(\n Need more practice ';
+      resultText += 'You did not pass\n${(total*0.8).floor() - resultScore} more correct answers needed to pass';
     }
     return resultText;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          Text(
-            resultPhrase,
-            style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          TextButton(
-            child: const Text(
-              'Restart Quiz !',
-              style: TextStyle(color: Colors.blue),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              resultPhrase,
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
-            onPressed: resetHandler,
-          )
-        ],
+            TextButton(
+              onPressed: resetHandler,
+              child: const Text(
+                'Restart Quiz !',
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
