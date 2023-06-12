@@ -53,11 +53,19 @@ class _QuizState extends State<Quiz> {
             ),
           ),
           SizedBox(
-            height: 150,
+            height: 110,
             child: Question(
               widget.questions[widget.questionIndex]['question'] as String,
             ),
           ),
+          if(widget.questions[widget.questionIndex].containsKey('image'))
+            Center(
+              child: Container(
+                alignment: Alignment.center,
+                height: 300,
+                child: Center(child: widget.questions[widget.questionIndex]['image'] as Image),
+              ),
+            ),
           const SizedBox(height: 2.0),
           Container(
             decoration: BoxDecoration( 
