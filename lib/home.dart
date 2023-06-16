@@ -92,7 +92,7 @@ class _Home extends State<Home> {
     // User chooses one of the tests from MyHomePage, number corresponding to the selected test gets passed to this class as testIndex
     switch(widget.testIndex){
       case 0: {
-        questions = tests.test2 as dynamic;
+        questions = tests.test1 as dynamic;
       }
       break;
 
@@ -102,12 +102,12 @@ class _Home extends State<Home> {
       break;
 
       case 2: {
-        questions = tests.test2 as dynamic;
+        questions = tests.test3 as dynamic;
       }
       break;
     }
     questions.shuffle();  // Shuffle question order
-    shuffleOptions();  // Shuffle order of answers in each question
+    //shuffleOptions();  // Shuffle order of answers in each question
   }
 
   Future<bool> _onWillPop() async {
