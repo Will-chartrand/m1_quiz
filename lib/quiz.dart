@@ -152,6 +152,7 @@ class _QuizState extends State<Quiz> {
                           child: const Text('Next'),
                         ),
                       ),
+                      if(widget.questions[widget.questionIndex].containsKey('explanation'))
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -159,13 +160,35 @@ class _QuizState extends State<Quiz> {
                             padding: const EdgeInsets.only(right: 8.0),
                             child: TextButton(
                               onPressed: () => {
-                                widget.answerQuestions(questionCorrect ? 1 : 0),
-                                setState((){
-                                  hasAnswered = false;
-                                  questionCorrect = selectedRadioTile == correctRadioTile;
-                                  selectedRadioTile = -1;
-                                  correctRadioTile = widget.questions[widget.questionIndex]['answer'] as int;
-                                }),
+                                showDialog<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Explanation'),
+                                      content: Text(
+                                        widget.questions[widget.questionIndex]['explanation'] as String
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            textStyle: Theme.of(context).textTheme.labelLarge,
+                                          ),
+                                          child: const Text('Next Question'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            widget.answerQuestions(questionCorrect ? 1 : 0);
+                                            setState((){
+                                              hasAnswered = false;
+                                              questionCorrect = selectedRadioTile == correctRadioTile;
+                                              selectedRadioTile = -1;
+                                            });
+                                          },
+
+                                        ),
+                                      ],
+                                    );
+                                  }
+                                ),
                               },
                               child: const Text('Explanation'),
                             ),
