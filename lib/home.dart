@@ -105,6 +105,16 @@ class _Home extends State<Home> {
         questions = tests.test3 as dynamic;
       }
       break;
+
+      case 3: {
+        questions = tests.test4 as dynamic;
+      }
+      break;
+
+      case 4: {
+        questions = tests.test5 as dynamic;
+      }
+      break;
     }
     questions.shuffle();  // Shuffle question order
     //shuffleOptions();  // Shuffle order of answers in each question
