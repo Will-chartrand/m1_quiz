@@ -52,8 +52,8 @@ class _QuizState extends State<Quiz> {
               ]
             ),
           ),
-          SizedBox(
-            height: 110,
+          Container(
+            constraints: const BoxConstraints(minHeight: 110),
             child: Question(
               widget.questions[widget.questionIndex]['question'] as String,
             ),
