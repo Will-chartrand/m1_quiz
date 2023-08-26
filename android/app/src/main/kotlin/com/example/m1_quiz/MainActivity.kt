@@ -1,4 +1,4 @@
-package com.example.m1_quiz
+package app.netlify.willchartrand.m1_quiz
 
 import io.flutter.embedding.android.FlutterActivity
 
