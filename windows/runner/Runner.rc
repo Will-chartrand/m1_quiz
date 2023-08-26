@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "m1_quiz" "\0"
+            VALUE "FileDescription", "M1 Practice Saskatchewan" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "m1_quiz" "\0"
+            VALUE "InternalName", "M1 Practice Saskatchewan" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "m1_quiz.exe" "\0"
-            VALUE "ProductName", "m1_quiz" "\0"
+            VALUE "ProductName", "M1 Practice Saskatchewan" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

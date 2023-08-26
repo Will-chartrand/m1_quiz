@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = m1_quiz
+PRODUCT_NAME = M1 Practice Saskatchewan;
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.m1Quiz
+PRODUCT_BUNDLE_IDENTIFIER = app.netlify.willchartrand.m1_quiz;
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
